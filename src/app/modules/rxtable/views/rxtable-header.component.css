@@ -1,0 +1,50 @@
+/****** SORT ***********/
+
+th{
+  font-size: 14px;
+}
+
+a {
+    display: block;
+    text-decoration: none;
+}
+  
+a.sort-by {
+    position: relative;
+    background: none;
+    border: none;
+    outline: none;
+    padding: 0 18px 0 0;
+    cursor: pointer;
+}
+  
+  a.sort-by:before,
+  a.sort-by:after {
+    border: 4px solid transparent;
+    content: "";
+    display: block;
+    height: 0;
+    right: 5px;
+    top: 50%;
+    position: absolute;
+    width: 0;
+  }
+  
+  a.sort-by:before {
+    border-bottom-color: #aaa;
+    margin-top: -9px;
+  }
+  
+  a.sort-by:after {
+    border-top-color: #aaa;
+    margin-top: 1px;
+  }
+  
+  a.asc:before {
+    border-bottom-color: #20a8d8;
+  }
+  
+  a.desc:after {
+    border-top-color: #20a8d8;
+  }
+  
