@@ -37,7 +37,8 @@ $ npm install rxtable-library
 ### Development
 
 Want to contribute? Great!
-
+npm library:
+[rxtable-library](https://www.npmjs.com/package/rxtable-library)
 
 
 ### Todos
