@@ -5,7 +5,7 @@ Easy to use Angular 4+ Table component with both server or client side paginatio
 ### How to Use
 
 Typical use of the rxtable with a observable service with server side pagination
-
+---
 _app.component.html_
 ```html
 <rx-table cssClass="table">
@@ -31,6 +31,7 @@ _app.component.html_
   </tbody>
 </rx-table>
 ```
+---
 _app.component.html_
 
 ```javascript
@@ -57,7 +58,7 @@ export class AppComponent implements OnInit {
 }
 
 ```
-
+---
 _dataService.ts_
 
 ```javascript
@@ -79,9 +80,10 @@ export class DataService {
 }
 ```
 
-###Options
+### Options
 
 Options for rxtable component
+
 `<rx-table cssClass="table" cssPagination="pagination" pagination="true" sorting="true">`
 
 | Setting       | Description                              | Default Value  |
@@ -92,6 +94,7 @@ Options for rxtable component
 | sorting       | enable table sorting                     | `true`         |
 
 Options for rxTableFor directive
+
 `*rxTableFor="let data of testdata; client:true; pagination:2">`
 
 | Setting       | Description                              | Default Value  |
