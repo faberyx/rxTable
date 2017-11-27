@@ -31,7 +31,7 @@ _app.component.html_
   </tbody>
 </rx-table>
 ```
-___
+---
 _app.component.html_
 
 ```javascript
@@ -58,7 +58,7 @@ export class AppComponent implements OnInit {
 }
 
 ```
-___
+---
 _dataService.ts_
 
 ```javascript
