@@ -31,7 +31,7 @@ _app.component.html_
   </tbody>
 </rx-table>
 ```
----
+___
 _app.component.html_
 
 ```javascript
@@ -58,7 +58,7 @@ export class AppComponent implements OnInit {
 }
 
 ```
----
+___
 _dataService.ts_
 
 ```javascript
@@ -82,7 +82,7 @@ export class DataService {
 
 ### Options
 
-Options for rxtable component
+Options for `rxtable` component
 
 `<rx-table cssClass="table" cssPagination="pagination" pagination="true" sorting="true">`
 
@@ -93,7 +93,7 @@ Options for rxtable component
 | pagination    | enable table pagination                  | `true`         |
 | sorting       | enable table sorting                     | `true`         |
 
-Options for rxTableFor directive
+Options for `*rxTableFor` directive
 
 `*rxTableFor="let data of testdata; client:true; pagination:2">`
 
