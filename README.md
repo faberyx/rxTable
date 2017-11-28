@@ -5,6 +5,7 @@ Easy to use Angular 4+ Table component with both server or client side paginatio
 ### How to Use
 
 Typical use of the rxtable with a observable service with server side pagination
+
 ---
 _app.component.html_
 ```html
