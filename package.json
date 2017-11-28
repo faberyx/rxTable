@@ -11,6 +11,10 @@
     "e2e": "ng e2e",
     "packagr": "ng-packagr -p ng-package.json"
   },
+  "repository" : { 
+    "type" : "git", 
+    "url" : "https://github.com/faberyx/rxTable.git"
+  }
   "private": false,
   "dependencies": {
     "@angular/animations": "^5.0.0",
