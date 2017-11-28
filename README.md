@@ -36,6 +36,7 @@ _app.component.html_
 _app.component.ts_
 
 ```javascript
+import { DataService } from './dataService';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
@@ -49,7 +50,7 @@ import 'rxjs/add/observable/of';
 export class AppComponent implements OnInit {
 
  testdata: Function;
-  
+
   constructor(public _service: DataService) {
   }
 
@@ -63,20 +64,39 @@ export class AppComponent implements OnInit {
 _dataService.ts_
 
 ```javascript
-import { IRxTableResponse } from 'RxTableResponse';
-import { RxTableRequest } from 'RxTableRequest';
+
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, } from 'rxjs/Observable';
+import { RxTableRequest } from 'rxtable-library/src/app/modules/rxtable/models/RxTableRequest';
+import { IRxTableResponse} from 'rxtable-library/src/app/modules/rxtable/models/RxTableResponse';
 
 
 @Injectable()
 export class DataService {
     constructor(private http: HttpClient) {
     }
-   
-    getData(request?: IPaginationRequest): Observable<IRxTableResponse<Array<Foo>>> {
-        return this.http.get<IRxTableResponse<Array<Foo>>>('/api/endpoint', { params: request })
+
+    getData(request?: RxTableRequest): Observable<IRxTableResponse<Array<any>>> {
+        return this.http.get<IRxTableResponse<Array<any>>>('/api/endpoint', { params: this.toHttpParams(request) })
+    }
+
+    private toHttpParams(params): HttpParams {
+        if (!params) {
+            return new HttpParams();
+        }
+        return Object.getOwnPropertyNames(params)
+            .reduce((p, key) => {
+                if (key === 'sort') {
+                    if (params[key]) {
+                        return p.set('sort', params[key].field).set('dir', params[key].dir);
+                    } else {
+                        return p.set(key, '');
+                    }
+                } else {
+                    return p.set(key, params[key]);
+                }
+            }, new HttpParams());
     }
 }
 ```
@@ -109,6 +129,28 @@ Options for `*rxTableFor` directive
 
 ```sh
 $ npm install rxtable-library
+```
+
+Update `app.module.ts`
+
+```javascript
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { RxtableModule } from 'rxtable-library';
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    RxtableModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
 ```
 
 ### Development
