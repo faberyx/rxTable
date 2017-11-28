@@ -33,7 +33,7 @@ _app.component.html_
 </rx-table>
 ```
 ---
-_app.component.html_
+_app.component.ts_
 
 ```javascript
 import { Component, OnInit } from '@angular/core';
