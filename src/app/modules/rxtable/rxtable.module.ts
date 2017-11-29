@@ -13,7 +13,7 @@ import { RxTableForDirective } from './componets/rxtable-tablefor.directive';
     RxTableComponent,
     RxTableHeaderComponent,
     RxTablePaginationComponent,
-    RxTableForDirective,
+    RxTableForDirective
   ],
   exports: [
     RxTableComponent,

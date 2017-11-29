@@ -13,7 +13,7 @@ import { Subject } from 'rxjs/Subject';
 export class RxTableHeaderComponent implements OnDestroy {
 
   @Input() field: string;
-  direction = ''
+  direction = '';
   private _sort: Subject<RxTableSort> = new Subject<RxTableSort>();
   public readonly sort: Observable<RxTableSort> = this._sort.asObservable();
 

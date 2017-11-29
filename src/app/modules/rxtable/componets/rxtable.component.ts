@@ -41,12 +41,12 @@ export class RxTableComponent implements AfterViewInit {
   constructor() {
   }
 
-  ngAfterViewInit() {    
+  ngAfterViewInit() {
     if (this.pagination) {
       Promise.resolve(null).then(() => {
-        this.paginationLimit = this.forDirective.rxTableForPagination;       
+        this.paginationLimit = this.forDirective.rxTableForPagination;
         this.forDirective.total.subscribe(t => this.total = t);
-      });  
+      });
     }
     if (this.sorting) {
       this.header

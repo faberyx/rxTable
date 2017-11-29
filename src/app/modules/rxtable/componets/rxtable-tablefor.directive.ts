@@ -38,7 +38,7 @@ export class RxTableForDirective implements DoCheck {
 
   private _isClientOperation = false;
   private _firstPage = 1;
-  private _limit: number = 20;
+  private _limit = 20;
   private _fnService: Function;
   private _collection: any;
   private _differ: IterableDiffer<any> | null = null;
@@ -108,10 +108,11 @@ export class RxTableForDirective implements DoCheck {
     try {
       const data = (dtn as IRxTableResponse<any>);
       this.total.next(data.total);
-      if (this.rxTableForClient)
+      if (this.rxTableForClient) {
         return this._clientRender(data.data);
-      else
+      } else {
         return data.data;
+      }
     } catch (err) {
       throw Error('Function response does not implement interface')
     }
@@ -136,7 +137,7 @@ export class RxTableForDirective implements DoCheck {
   }
 
   private _clientRender(collection: Array<any>): Array<any> {
-    
+
     const page = this._currentRequest.page;
     collection = collection.slice((page - 1) * this._limit, page * this._limit);
 

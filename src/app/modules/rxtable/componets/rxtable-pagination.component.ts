@@ -20,7 +20,7 @@ export class RxTablePaginationComponent {
   @Input() limit = 20;
   @Input() cssClass = 'pagination';
 
-  constructor() { 
+  constructor() {
   }
 
   getMin(): number {
