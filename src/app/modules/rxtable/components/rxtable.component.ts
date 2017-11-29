@@ -10,10 +10,10 @@ import {
   ChangeDetectionStrategy
 } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
-import { RxTableSort, RxTableRequest } from '../models/RxTableRequest'
+import { RxTableSort, RxTableRequest } from '../models/RxTableRequest';
 import { Observable } from 'rxjs/Observable';
-import { RxTableHeaderComponent } from '../componets/rxtable-header.component';
-import { RxTableForDirective } from '../componets/rxtable-tablefor.directive';
+import { RxTableHeaderComponent } from '../components/rxtable-header.component';
+import { RxTableForDirective } from '../components/rxtable-tablefor.directive';
 
 import 'rxjs/add/operator/merge';
 
