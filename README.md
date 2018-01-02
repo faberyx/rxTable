@@ -110,9 +110,13 @@ Options for `rxtable` component
 | Setting       | Description                              | Default Value  |
 | ------------- |------------------------------------------| ---------------|
 | cssClass      | css class applied to the table           | `table`        |
-| cssPagination | css class applied to the pagination      | `pagination`   |
+| cssPaginator  | css class applied to the pagination      | `pagination`   |
 | pagination    | enable table pagination                  | `true`         |
 | sorting       | enable table sorting                     | `true`         |
+| cssFooter     | css class applied to the pagitor footer  |                |
+| sorting       | enable table sorting                     | `true`         |
+| paginationPages | enable pagination limit dropdown       | `false`        |
+| params        | extra parameters to pass to the request obj.|             |
 
 Options for `*rxTableFor` directive
 
