@@ -33,7 +33,7 @@ export class RxTableComponent implements AfterViewInit {
   @Input() cssFooter: string;
   @Input() pagination = true;
   @Input() sorting = true;
-  @Input() paginationPages = true;
+  @Input() paginationPages = false;
   @Input()
   set params(name: any) {
     this._params = name;
