@@ -3,12 +3,14 @@
     <ng-content select="tbody"></ng-content>
   </table>
   <rxtable-pagination 
-  [cssClass]="cssPagination"
-  *ngIf="pagination" 
-  (goPage)="goToPage($event)"
+   *ngIf="pagination" 
+   (goPage)="goToPage($event)"
    (goNext)="onNext()" 
    (goPrev)="onPrev()" 
    [limit]="paginationLimit"
    [page]="page" 
+   [cssFooter]="cssFooter"
+   [cssPaginator]="cssPaginator"
+   [paginationPages]="paginationPages"
    [count]="total">
   </rxtable-pagination>

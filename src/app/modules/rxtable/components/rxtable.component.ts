@@ -29,14 +29,23 @@ export class RxTableComponent implements AfterViewInit {
   @ContentChild(forwardRef(() => RxTableForDirective)) forDirective: RxTableForDirective;
 
   @Input() cssClass = 'table';
-  @Input() cssPagination = 'pagination';
+  @Input() cssPaginator = 'pagination';
+  @Input() cssFooter: string;
   @Input() pagination = true;
   @Input() sorting = true;
+  @Input() paginationPages = true;
+  @Input()
+  set params(name: any) {
+    this._params = name;
+    this.goToPage(1);
+  }
+  get params(): any { return this._params; }
 
   total = 0;
   page = 1;
   paginationLimit = 0;
   private _sort: RxTableSort;
+  private _params: any;
 
   constructor() {
   }
@@ -61,7 +70,7 @@ export class RxTableComponent implements AfterViewInit {
   }
 
   setPage() {
-    this.forDirective.updateData({ page: this.page, limit: this.paginationLimit, sort: this._sort } as RxTableRequest);
+    this.forDirective.updateData({ page: this.page, limit: this.paginationLimit, sort: this._sort, params: this.params } as RxTableRequest);
   }
 
   goToPage(n: number): void {
@@ -77,5 +86,10 @@ export class RxTableComponent implements AfterViewInit {
   onPrev(): void {
     this.page--;
     this.setPage();
+  }
+
+  setLimit(n: number): void {
+    this.paginationLimit = n;
+    this.goToPage(1);
   }
 }

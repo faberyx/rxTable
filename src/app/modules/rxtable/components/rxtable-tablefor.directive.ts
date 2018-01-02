@@ -73,10 +73,10 @@ export class RxTableForDirective implements DoCheck {
         if (this._collection && !this._differ) {
           this._differ = this._differs.find(this._collection).create(null);
         }
-      }
-      else { // collection is an observable
+      } else { // collection is an observable
+        const st = localStorage.getItem('paginate');
         this._fnService = data;
-        this._currentRequest = { page: this._firstPage, limit: this._limit, sort: null } as RxTableRequest;
+        this._currentRequest = { page: this._firstPage, limit: st ? Number(st) : this._limit, sort: null } as RxTableRequest;
         try {
           const srv = (data(this._currentRequest) as Observable<any>);
           srv.subscribe(result => {
@@ -114,7 +114,7 @@ export class RxTableForDirective implements DoCheck {
         return data.data;
       }
     } catch (err) {
-      throw Error('Function response does not implement interface')
+      throw Error('Function response does not implement interface');
     }
   }
 
@@ -139,7 +139,8 @@ export class RxTableForDirective implements DoCheck {
   private _clientRender(collection: Array<any>): Array<any> {
 
     const page = this._currentRequest.page;
-    collection = collection.slice((page - 1) * this._limit, page * this._limit);
+    const limit = this._currentRequest.limit;
+    collection = collection.slice((page - 1) * limit, page * this._limit);
 
     if (this._currentRequest.sort) {
       collection = collection.sort(this._sortFn(this._currentRequest.sort.field, this._currentRequest.sort.dir))

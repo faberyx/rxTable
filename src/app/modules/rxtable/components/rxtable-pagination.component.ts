@@ -15,12 +15,27 @@ export class RxTablePaginationComponent {
   @Output() goPrev = new EventEmitter<boolean>();
   @Output() goNext = new EventEmitter<boolean>();
   @Output() goPage = new EventEmitter<number>();
+  @Output() setLimit = new EventEmitter<number>();
 
   @Input() pagesToShow = 5;
   @Input() limit = 20;
-  @Input() cssClass = 'pagination';
+  @Input() cssPaginator = 'pagination';
+  @Input() cssFooter: string;
+  @Input() paginationPages = false;
+
+  pages = [10, 20, 40, 60, 100, -1];
+  showPage = false;
 
   constructor() {
+  }
+
+  onLimitChange(e: number) {
+    if (e < 0) {
+      e = this.count;
+    }
+    this.showPage = true;
+    localStorage.setItem('paginate', e.toString());
+    this.setLimit.emit(e);
   }
 
   getMin(): number {
@@ -40,13 +55,15 @@ export class RxTablePaginationComponent {
   }
 
   onPrev(): void {
-    if (this.page !== 1)
+    if (this.page !== 1) {
       this.goPrev.emit(true);
+    }
   }
 
   onNext(next: boolean): void {
-    if (!this.lastPage())
+    if (!this.lastPage()) {
       this.goNext.emit(next);
+    }
   }
 
   totalPages(): number {

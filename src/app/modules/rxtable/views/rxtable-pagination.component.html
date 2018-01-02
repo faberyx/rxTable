@@ -1,11 +1,24 @@
-<ul class="{{cssClass}}" *ngIf="count > 0">
-  <li  [ngClass]="{ 'disabled': page === 1 }">
-    <a href="#" (click)="onPrev();false">Prev</a>
-  </li>
-  <li *ngFor="let pageNum of getPages()" [ngClass]="{'active': pageNum === page}" >
-    <a href="#" (click)="onPage(pageNum);false">{{ pageNum }}</a>
-  </li>
-  <li  [ngClass]="{ 'disabled': lastPage() }">
-    <a href="#" (click)="onNext(true);false">Next</a>
-  </li>
-</ul>
+<div class="row">
+  <ul class="{{cssPaginator}} col-lg-8" *ngIf="count > 0">
+    <li [ngClass]="{ 'disabled': page === 1 }">
+      <a href="#" (click)="onPrev();false">Prev</a>
+    </li>
+    <li *ngFor="let pageNum of getPages()" [ngClass]="{'active': pageNum === page}">
+      <a href="#" (click)="onPage(pageNum);false">{{ pageNum }}</a>
+    </li>
+    <li [ngClass]="{ 'disabled': lastPage() }">
+      <a href="#" (click)="onNext(true);false">Next</a>
+    </li>
+  </ul>
+  <div class="{{cssFooter}} col-lg-4">
+    <div class="col-md-6">
+      Page <strong>{{page}}</strong> of {{totalPages()}}
+    </div>
+    <div *ngIf="paginationPages" class="text-right col-md-6">
+      <label for="pagination-entries">Entries per page:</label>
+      <select id="pagination-entries" (change)="onLimitChange($event.target.value)">
+        <option *ngFor="let p of pages" [selected]="p === limit" value="{{p}}">{{p === -1 ? 'All' : p}}</option>
+      </select>
+    </div>
+  </div>
+</div>

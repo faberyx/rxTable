@@ -2,7 +2,7 @@ export class RxTableRequest {
     page: number;
     limit: number;
     params: any;
-    sort: RxTableSort
+    sort: RxTableSort;
 }
 
 export class RxTableSort {

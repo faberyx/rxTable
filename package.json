@@ -1,6 +1,6 @@
 {
   "name": "rxtable-library",
-  "version": "0.0.3",
+  "version": "0.0.3npm run packagr",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
